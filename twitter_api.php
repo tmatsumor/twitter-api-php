@@ -4,6 +4,7 @@ require_once('http-requests-php/http_requests.php');
 class TwitterAPI extends HttpRequests
 {
     const TWITTER_URL = 'https://api.twitter.com/2/';
+    const TWITTER_TOKEN = __DIR__.'/twitter_token.json';
     private $token;
 
     public function __construct($twitter_token, $userpwd) {
