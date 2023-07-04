@@ -1,7 +1,8 @@
 <?php
 require_once('http-requests-php/http_requests.php');
+namespace tmatsumor\twitter_api_php;
 
-class TwitterAPI extends HttpRequests
+class TwitterAPI extends \tmatsumor\http_requests_php\HttpRequests
 {
     const TWITTER_URL = 'https://api.twitter.com/2/';
     const TWITTER_TOKEN = __DIR__.'/twitter_token.json';
