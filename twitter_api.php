@@ -1,6 +1,8 @@
 <?php
-require_once('http-requests-php/http_requests.php');
 namespace tmatsumor\twitter_api_php;
+if(!class_exists('\tmatsumor\http_requests_php\HttpRequests')){
+    require_once(__DIR__.'/http_requests_php/http_requests.php');
+}
 
 class TwitterAPI extends \tmatsumor\http_requests_php\HttpRequests
 {
