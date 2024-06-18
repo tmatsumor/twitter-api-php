@@ -12,7 +12,8 @@ class TwitterAPI extends \tmatsumor\http_requests_php\HttpRequests
 
     public function __construct($userpwd) {
         $this->token = json_decode(file_get_contents(self::TWITTER_TOKEN), true);
-        if(rand(0, 9) % 4 === 0){                  // refresh current token
+        $filets = filemtime(self::TWITTER_TOKEN);
+        if(time() - $filets > 3600){                  // refresh current token
             $p = 'grant_type=refresh_token'
                . '&refresh_token='.$this->token['refresh_token'];
             $this->token = json_decode($this->post(self::TWITTER_URL.'oauth2/token',
