@@ -18,7 +18,9 @@ class TwitterAPI extends \tmatsumor\http_requests_php\HttpRequests
                . '&refresh_token='.$this->token['refresh_token'];
             $this->token = json_decode($this->post(self::TWITTER_URL.'oauth2/token',
                 $p,  ['Content-type: application/x-www-form-urlencoded'], $userpwd)[0], true);
-            file_put_contents(self::TWITTER_TOKEN, stripslashes(trim(json_encode($this->token), '"')));
+            if (array_key_exists('refresh_token', $this->token)) {
+                file_put_contents(self::TWITTER_TOKEN, stripslashes(trim(json_encode($this->token), '"')));
+            }
         }
     }
 
